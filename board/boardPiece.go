@@ -1,6 +1,6 @@
 package board
 
-// boardPiece stores the pices type, color and position.
+// boardPiece stores the pieces type, color and position.
 type boardPiece struct {
 	// piece is a number between 0 and 15 where 0-7 are the white pieces and 8-15 are the
 	// black pieces.
@@ -64,7 +64,7 @@ func (bp *boardPiece) SetColor(c pieceColor) (err error) {
 	return
 }
 
-// SetPiece takes a piece type between 0 (Pawn) and 5 (King). If it receives and invalied
+// SetPiece takes a piece type between 0 (Pawn) and 5 (King). If it receives and invalid
 // value, it will return an error.
 func (bp *boardPiece) SetPiece(p pieceType) (err error) {
 	if err = checkType(p); err != nil {
@@ -95,4 +95,8 @@ func (bp *boardPiece) SetPosition(rank coord, file coord) (err error) {
 	bp.position = uint8(boardSize*rank + file)
 
 	return nil
+}
+
+func coordsToPos(rank coord, file coord) uint8 {
+	return uint8(boardSize*rank + file)
 }
